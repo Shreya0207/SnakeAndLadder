@@ -50,6 +50,7 @@ namespace SnakeAndLadderProgram
                     currentPosition = STARTING_POSITION;
                 else
                     currentPosition = nextPosition;
+                Console.WriteLine("Position After Die Roll No. " + throws + " is " + currentPosition);
             }
             Console.WriteLine("No. Of Total Die Rolls : " + throws);
             Console.WriteLine("Final Position of Player : " + currentPosition);
