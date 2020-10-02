@@ -14,8 +14,7 @@ namespace SnakeAndLadderProgram
             Random random = new Random();
             int diceNumber = random.Next(1, 7);
             return diceNumber;
-        }
-        public static int newPosition(int diceNumber)
+        }public static int newPosition(int diceNumber)
         {
             int toAdd = 0;
             Random random = new Random();
@@ -35,8 +34,21 @@ namespace SnakeAndLadderProgram
         }
         static void Main(string[] args)
         {
-            int numOnDie = DiceRoll();
-            int toAdd = newPosition(numOnDie);
+            int currentPosition = STARTING_POSITION, nextPosition;
+            int throws = 0;
+            while (currentPosition < ENDING_POSITION)
+            {
+                int numOnDie = DiceRoll();
+                throws++;
+                int toAdd = newPosition(numOnDie);
+                nextPosition = currentPosition + toAdd;
+                if (nextPosition < STARTING_POSITION)
+                    currentPosition = STARTING_POSITION;
+                else
+                    currentPosition = nextPosition;
+            }
+            Console.WriteLine("No. Of Total Die Rolls : " + throws);
+            Console.WriteLine("Final Position of Player : " + currentPosition);
         }
     }
 }
